@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPX Cinemas</title>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Top Navigation Bar */
+        .top {
+            height: 64px;
+            width: 100%;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        img.ppx {
+            height: 64px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .top input[type=submit] {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .top input[type=submit]:hover {
+            background-color: grey;
+        }
+
+        /* Image Gallery Container */
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 80px 10px 20px;
+        }
+
+        .gallery-container img {
+            max-width: 300px;
+            max-height: 450px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+        }
+		
+		
+		}
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <div class="top">
+        <img src="PPX.jpg" alt="PPX Cinemas Logo" class="ppx">
+        <div class="button-container">
+            <input type="submit" value="Contact Us" class="contact">
+            <input type="submit" value="Help" class="help">
+        </div>
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="gallery-container">
+        <img src="HD-wallpaper-movie-american-psycho.jpg" alt="American Psycho Poster">
+        <img src="MV5BMTc0NDA0NzU5NF5BMl5BanBnXkFtZTgwNTQ2MjEyMDE@._V1_.jpg" alt="Inception Poster">
+        <img src="HD-wallpaper-movie-fight-club.jpg" alt="Fight Club Poster">
+        <img src="31-facts-about-the-movie-the-inglorious-bastards-1696941275.jpg" alt="Inglorious Bastards Poster">
+		<img src="interstellar.jpg" alt="Interstellar Poster" class="interstellar">
+		<img src="martian.jpg" alt="Martian Poster">
+		<img src="TI.jpg" alt="3 Idiots Poster">
+		<img src="em.jpg" alt="8 Mile Poster">
+    </div>
+
+</body>
+</html>
