@@ -8,7 +8,7 @@
         body {
             background-color: #2c2c2c;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Top Navigation Bar */
@@ -64,8 +64,113 @@
             object-fit: cover;
         }
 		
+		img:hover{
+			filter: brightness(50%);
 		
 		}
+        .popup{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height:400px;
+            background: dimgrey;
+            border-radius:6px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%,-50%) scale(0.1);
+            text-align: center;
+            padding: 0 30px 30px;
+            color: #fff;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+
+        }
+        .open-popup{
+            visibility: visible;
+            top:50%;
+            transform: translate(-50%,-50%) scale(1);
+
+        }
+
+        .tickets{
+            font-weight: 400;
+            font-size: 1.2em;
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid #333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            color: #fff;
+            margin-bottom: 2em;
+            padding: 0.5em;
+            background-color: #2c2c2c;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        .result{
+            font-weight: 400;
+            font-size: 1.2em;
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid #333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            color: #fff;
+            margin-bottom: 2em;
+            padding: 0.5em;
+            background-color: #2c2c2c;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .purchase{
+            margin-left: -5%;
+            margin-right: 5%;
+            padding: 10px 20px;
+            background: #fff;
+            outline: none;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: 500;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cancel{
+            padding: 10px 20px;
+            background: #fff;
+            outline: none;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: 500;
+            border-radius: 20px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            
+        }
+        #result {
+                        margin-top: -5%;
+                        display: block;
+                        width: 100%;
+                        font-size: 1.2em;
+                        text-align: center;
+                        margin-top: 1.5em;
+                        color: #fff;
+                        background-color: #2c2c2c;
+                        padding: 0.8em 0;
+                        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+		
+       
+       
     </style>
 </head>
 <body>
@@ -80,16 +185,68 @@
     </div>
 
     <!-- Image Gallery -->
+   
     <div class="gallery-container">
-        <img src="HD-wallpaper-movie-american-psycho.jpg" alt="American Psycho Poster">
-        <img src="MV5BMTc0NDA0NzU5NF5BMl5BanBnXkFtZTgwNTQ2MjEyMDE@._V1_.jpg" alt="Inception Poster">
-        <img src="HD-wallpaper-movie-fight-club.jpg" alt="Fight Club Poster">
-        <img src="31-facts-about-the-movie-the-inglorious-bastards-1696941275.jpg" alt="Inglorious Bastards Poster">
-		<img src="interstellar.jpg" alt="Interstellar Poster" class="interstellar">
-		<img src="martian.jpg" alt="Martian Poster">
-		<img src="TI.jpg" alt="3 Idiots Poster">
-		<img src="em.jpg" alt="8 Mile Poster">
+       <div class="popup" id="popup">
+        How many tickets do you want?
+        <br>
+        <br>
+
+
+        <input type="number" max="10" min="0" id="ticket_no" class="tickets" onclick="update()">
+        <br>
+
+        Price
+        <br>
+        <br>
+
+       <p id="result"></p>
+
+        <br>
+       <div class="buttons">
+        <input type="submit" value="Purchase" id="purchase" class="purchase" onclick="displayEsewa()">
+       
+     <input type="submit" value="Cancel" id="cancel" class="cancel" onclick="closePopup()">
+       </div>
+        
+        
+       </div>
+       
+        <img src="HD-wallpaper-movie-american-psycho.jpg" alt="American Psycho Poster" onclick="openPopup()">
+        <img src="MV5BMTc0NDA0NzU5NF5BMl5BanBnXkFtZTgwNTQ2MjEyMDE@._V1_.jpg" alt="Inception Poster" onclick="openPopup()">
+        <img src="HD-wallpaper-movie-fight-club.jpg" alt="Fight Club Poster" onclick="openPopup()">
+        <img src="31-facts-about-the-movie-the-inglorious-bastards-1696941275.jpg" alt="Inglorious Bastards Poster" onclick="openPopup()">
+		<img src="interstellar.jpg" alt="Interstellar Poster" class="interstellar" onclick="openPopup()">
+		<img src="martian.jpg" alt="Martian Poster" onclick="openPopup()">
+		<img src="TI.jpg" alt="3 Idiots Poster" onclick="openPopup()">
+		<img src="em.jpg" alt="8 Mile Poster" onclick="openPopup()">
     </div>
+
+<script>
+    let popup= document.getElementById('popup');
+
+    function openPopup(){
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup(){
+        popup.classList.remove("open-popup");
+    }
+
+    function update(){
+        let tick=document.getElementById('ticket_no').value;
+        let am=tick*450;
+        document.getElementById('result').innerHTML=+am;
+
+    }
+    update();
+
+    function displayEsewa(){
+        window.location.href="http://localhost/PPX/Esewa.html";
+    }
+
+   
+</script>
 
 </body>
 </html>
